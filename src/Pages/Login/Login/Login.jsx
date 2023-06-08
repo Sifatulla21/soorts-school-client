@@ -36,7 +36,7 @@ const Login = () => {
             .catch(error => {
                 console.log(error.message);
                 if (error.code === 'auth/user-not-found' || error.code === 'auth/wrong-password') {
-                    setErrorMessage('Invalid email or password');
+                    setErrorMessage('Invalid Email or Password');
                 } else {
                     setErrorMessage('Login failed. Please try again.');
                 }
@@ -72,7 +72,7 @@ const Login = () => {
                                 <input className="btn btn-primary" type="submit" value="Login" />
                             </div>
                             <div>
-                                {errorMessage && <span className="text-red-600">{errorMessage}</span>}
+                                {errorMessage && <span className="text-red-600 font-semibold">{errorMessage}</span>}
                             </div>
                         </form>
                         <p>New to Sports School? <Link className="text-primary font-bold" to="/signup">Sign Up</Link></p>

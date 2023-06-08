@@ -9,6 +9,7 @@ import { AuthContext } from '../../../Provider/AuthProvider';
 const SignUp = () => {
     const { createUser, updateUser } = useContext(AuthContext);
     const googleProvider = new GoogleAuthProvider();
+    const [errorMessage, setErrorMessage] = useState('');
     const auth = getAuth(app);
     const navigate = useNavigate();
     const location = useLocation();
@@ -31,11 +32,13 @@ const SignUp = () => {
         createUser(data.email, data.password)
         .then(result => {
             updateUser(result.user, data.name, data.photo);
-            console.log(result.name ); 
             navigate(from);
         })
         .catch(error => {
             console.log(error);
+            if (error.code === 'auth/email-already-in-use') {
+                setErrorMessage('User Already Exist');
+            } 
         })
         console.log(data);
     }
@@ -91,6 +94,9 @@ const SignUp = () => {
                                  validate: (value) => value === password.current || 'The passwords do not match', })} placeholder="Confirm Password" className="input input-bordered" />
                                 {errors.confirm?.type === 'required' && <span className="text-red-600">Confirm password is required</span>}
                                 {errors.confirm?.type === 'validate' && <span className="text-red-600">{errors.confirm.message}</span>}
+                            </div>
+                            <div>
+                                {errorMessage && <span className="text-red-600 font-semibold">{errorMessage}</span>}
                             </div>
                             <div className="form-control mt-6">
                                 <input className="btn btn-primary" type="submit" value="Sign Up" />
