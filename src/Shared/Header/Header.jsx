@@ -1,12 +1,30 @@
+import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import logo from '../../assets/logo.png';
+import { AuthContext } from '../../Provider/AuthProvider';
 const Header = () => {
+
+    const { user, logOut } = useContext(AuthContext);
+    const handleLogOut = () => {
+        logOut()
+            .then(() => { })
+            .catch(error => console.log(error))
+    }
     const navItems = <>
         <li><Link to="/">Home </Link></li>
         <li><Link to="/">Instractor</Link></li>
         <li><Link to="/">Classes</Link></li>
         <li><Link to="/">Dashboard</Link></li>
-        <li><Link to="/login">Login</Link></li>
+        {user?.email ? <>
+            <div className="flex">
+                <li> <button className="mr-4" onClick={handleLogOut}>Log Out</button> </li>
+                <div data-tip={user?.displayName} className="tooltip tooltip-bottom">
+                    <img className="w-12 rounded-full" src={user?.photoURL} alt="" />
+                </div>
+            </div>
+        </> : <li><Link to="/login">Login</Link></li>
+        }
+
     </>
     return (
         <div className="navbar bg-neutral text-neutral-content  py-8 px-48 mb-8">
@@ -19,7 +37,7 @@ const Header = () => {
                         {navItems}
                     </ul>
                 </div>
-                <Link to="/"><img className="h-14 w-12" src={logo} alt="" /></Link>
+                <Link to="/"><img className="h-18 w-24" src={logo} alt="" /></Link>
             </div>
             <div className="navbar-center hidden lg:flex">
                 <ul className="menu menu-horizontal px-1">
@@ -28,7 +46,7 @@ const Header = () => {
             </div>
             <div className="navbar-end mr-24">
                 <ul className="menu menu-horizontal px-1">
-                   
+
                 </ul>
             </div>
         </div>
