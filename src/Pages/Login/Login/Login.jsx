@@ -5,41 +5,42 @@ import { FaGoogle } from 'react-icons/fa';
 import img from '../../../assets/sports.jpg';
 import app from '../../../Firebase/firebase.config';
 import { AuthContext } from '../../../Provider/AuthProvider';
+import { useForm } from 'react-hook-form';
 const Login = () => {
-    const {signIn} = useContext(AuthContext);
-    const [error, setError] = useState('');
-    const googleProvider = new GoogleAuthProvider(); 
+    const { signIn } = useContext(AuthContext);
+    const [errorMessage, setErrorMessage] = useState('');
+    const googleProvider = new GoogleAuthProvider();
     const auth = getAuth(app);
     const location = useLocation();
     const navigate = useNavigate();
     const from = location.state?.from?.pathname || "/";
-    const handleLogin = event => {
-        event.preventDefault();
-        const form = event.target;
-        const email = form.email.value;
-        const password = form.password.value;
-        signIn(email,password)
-        .then(result => {
-            const user = result.user;
-            console.log(user);
-            navigate(from, {replace: true });
-        })
-        .catch(error => {
-            const splitedMessage = error.message.split('/');
-            const splitedError = splitedMessage[1].split(')');
-            setError(splitedError[0].toUpperCase());
-        })
-    }
     const handleGoogleSignIn = () => {
-        signInWithPopup(auth,googleProvider)
-        .then(result =>{
-            const user = result.user;
-            navigate(from);
-        })
-        .catch(error =>{
-            console.log("Error:",error.message);
-        })
-           
+        signInWithPopup(auth, googleProvider)
+            .then(result => {
+                const user = result.user;
+                navigate(from);
+            })
+            .catch(error => {
+                console.log("Error:", error.message);
+            })
+
+    }
+    const { register, handleSubmit, formState: { errors } } = useForm();
+    const onSubmit = data => {
+        signIn(data.email, data.password)
+            .then(result => {
+                const user = result.user;
+                // console.log(user);
+                navigate(from, { replace: true });
+            })
+            .catch(error => {
+                console.log(error.message);
+                if (error.code === 'auth/user-not-found' || error.code === 'auth/wrong-password') {
+                    setErrorMessage('Invalid email or password');
+                } else {
+                    setErrorMessage('Login failed. Please try again.');
+                }
+            })
     }
     return (
         <div className="hero min-h-screen bg-base-200">
@@ -50,31 +51,34 @@ const Login = () => {
                 <div className="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100  shadow-lg hover:shadow-xl transition duration-1000 ease-in-out transform hover:-translate-y-1 hover:scale-110">
                     <div className="card-body">
                         <h1 className="text-3xl font-bold text-center">Login now!</h1>
-                        <form onSubmit={handleLogin}>
+                        <form onSubmit={handleSubmit(onSubmit)}>
                             <div className="form-control">
                                 <label className="label">
                                     <span className="label-text">Email</span>
                                 </label>
-                                <input required type="text" name="email" placeholder="email" className="input input-bordered" />
+                                <input {...register("email", { required: true })} type="text" name="email" placeholder="email" className="input input-bordered" />
+                                {errors.email && <span className="text-red-600">Email is required</span>}
                             </div>
                             <div className="form-control">
                                 <label className="label">
                                     <span className="label-text">Password</span>
                                 </label>
-                                <input required type="password" name="password"  placeholder="password" className="input input-bordered" />
-                                <label className="label">
-                                    <a href="#" className="label-text-alt link link-hover">Forgot password?</a>
-                                </label>
+                                <input {...register("password", {
+                                    required: true
+                                })} type="password" name="password" placeholder="password" className="input input-bordered" />
+                                {errors.password?.type === 'required' && <span className="text-red-600">Password is required</span>}
                             </div>
                             <div className="form-control mt-6">
                                 <input className="btn btn-primary" type="submit" value="Login" />
                             </div>
+                            <div>
+                                {errorMessage && <span className="text-red-600">{errorMessage}</span>}
+                            </div>
                         </form>
-                        <h3 className="text-red-500 font-bold">{error}</h3>
                         <p>New to Sports School? <Link className="text-primary font-bold" to="/signup">Sign Up</Link></p>
                         <div className="divider">OR Sign In With</div>
                         <div>
-                        <button onClick={handleGoogleSignIn} className="btn btn-outline btn-primary btn-block">
+                            <button onClick={handleGoogleSignIn} className="btn btn-outline btn-primary btn-block">
                                 <FaGoogle className="mr-2"></FaGoogle>Google
                             </button>
                         </div>

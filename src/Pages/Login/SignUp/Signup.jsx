@@ -30,8 +30,8 @@ const SignUp = () => {
     const onSubmit = data => {
         createUser(data.email, data.password)
         .then(result => {
-            updateUser(result.user, result.name, result.photo)
-            console.log(result);
+            updateUser(result.user, data.name, data.photo);
+            console.log(result.name ); 
             navigate(from);
         })
         .catch(error => {
