@@ -36,12 +36,13 @@ import PrivateRoute from "./PrivateRoute";
     },
     {
       path:'dashboard',
-      element:<PrivateRoute><Dashboard></Dashboard></PrivateRoute>,
+      // element:<PrivateRoute><Dashboard></Dashboard></PrivateRoute>,
+      element:<Dashboard></Dashboard>,
       children:[
           {
               path:'addclass',
               element:<InstractorRoute><AddClass></AddClass></InstractorRoute>
-          },   
+            },   
           {
               path:'manageusers',
               element:<AdminRoute><ManageUsers></ManageUsers></AdminRoute>
