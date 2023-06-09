@@ -10,6 +10,8 @@ import ErrorPage from "../Pages/ErrorPage/ErrorPage";
 import Home from "../Pages/Home/Home/Home";
 import Login from "../Pages/Login/Login/Login";
 import SignUp from "../Pages/Login/SignUp/Signup";
+import AdminRoute from "./AdminRoute";
+import InstractorRoute from "./InstractorRoute";
 import PrivateRoute from "./PrivateRoute";
 
   export const router = createBrowserRouter([
@@ -38,11 +40,11 @@ import PrivateRoute from "./PrivateRoute";
       children:[
           {
               path:'addclass',
-              element:<AddClass></AddClass>
+              element:<InstractorRoute><AddClass></AddClass></InstractorRoute>
           },   
           {
               path:'manageusers',
-              element:<ManageUsers></ManageUsers>
+              element:<AdminRoute><ManageUsers></ManageUsers></AdminRoute>
           },   
       ]
   },

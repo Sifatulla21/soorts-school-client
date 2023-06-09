@@ -12,7 +12,7 @@ const Header = () => {
         <li><Link to="/">Home </Link></li>
         <li><Link to="/">Instractor</Link></li>
         <li><Link to="/">Classes</Link></li>
-        <li><Link to="/dashboard/addclass">Dashboard</Link></li>
+        <li><Link to="/dashboard">Dashboard</Link></li>
         {user?.email ? <>
             <div className="flex">
                 <li> <button className="mr-4" onClick={handleLogOut}>Log Out</button> </li>

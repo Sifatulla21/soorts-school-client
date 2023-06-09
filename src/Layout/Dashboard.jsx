@@ -24,7 +24,7 @@ const Dashboard = () => {
                                 <li><Link>Manage Classes</Link></li>
                             </> : isInstractor ?
                                 <>
-                                    <li><Link>Add A Class</Link></li>
+                                    <li><Link to="addclass">Add A Class</Link></li>
                                     <li><Link>My Classes</Link></li>
                                 </> : <>
                                     <li><Link>My Selected Classes</Link></li>
