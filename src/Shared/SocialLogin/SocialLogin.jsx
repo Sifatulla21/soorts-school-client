@@ -14,12 +14,23 @@ const SocialLogin = () => {
         signInWithPopup(auth, googleProvider)
             .then(result => {
                 const user = result.user;
-                navigate(from);
+                const savedUser = {name: user.displayName, email:user.email, photoURL: user.photoURL}
+                fetch('http://localhost:5000/users',{
+                    method: 'POST',
+                    headers: {
+                        'content-type' : 'application/json'
+                    },
+                    body: JSON.stringify(savedUser)
+                })
+                .then(res => res.json())
+                .then(data => {
+                    navigate(from);
+                })
             })
             .catch(error => {
                 console.log("Error:", error.message);
             })
-
+           
     }
     return (
         <div>
