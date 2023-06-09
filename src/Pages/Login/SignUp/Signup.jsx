@@ -1,4 +1,4 @@
-import { getAuth, GoogleAuthProvider, signInWithPopup } from 'firebase/auth';
+import { getAuth } from 'firebase/auth';
 import React, { useContext, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { FaGoogle } from 'react-icons/fa';
@@ -6,32 +6,34 @@ import { Link, useLocation, useNavigate } from 'react-router-dom';
 import img from '../../../assets/sports.jpg';
 import app from '../../../Firebase/firebase.config';
 import { AuthContext } from '../../../Provider/AuthProvider';
+import SocialLogin from '../../../Shared/SocialLogin/SocialLogin';
 const SignUp = () => {
     const { createUser, updateUser } = useContext(AuthContext);
-    const googleProvider = new GoogleAuthProvider();
     const [errorMessage, setErrorMessage] = useState('');
     const auth = getAuth(app);
     const navigate = useNavigate();
     const location = useLocation();
     const from = location.state?.from?.pathname || '/';
-    const handleGoogleSignIn = () => {
-        signInWithPopup(auth, googleProvider)
-            .then(result => {
-                const user = result.user;
-                navigate(from);
-            })
-            .catch(error => {
-                console.log("Error:", error.message);
-            })
-
-    }
-    const { register, handleSubmit, watch, formState: { errors } } = useForm();
+    const { register, handleSubmit, reset, watch, formState: { errors } } = useForm();
     const password = React.useRef({});
     password.current = watch('password', '');
     const onSubmit = data => {
         createUser(data.email, data.password)
         .then(result => {
             updateUser(result.user, data.name, data.photo);
+            const savedUser = {name: data.name, email:data.email, photoURL: data.photo}
+            fetch('http://localhost:5000/users',{
+                method: 'POST',
+                headers: {
+                    'content-type' : 'application/json'
+                },
+                body: JSON.stringify(savedUser)
+            })
+            .then(res => res.json())
+            .then(data => {
+                console.log(data);
+            })
+            reset();
             navigate(from);
         })
         .catch(error => {
@@ -103,12 +105,7 @@ const SignUp = () => {
                             </div>
                         </form>
                         <p>Already have an account? <Link className="text-primary font-bold" to="/login">Sign In </Link></p>
-                        <div className="divider">OR Sign In With</div>
-                        <div>
-                            <button onClick={handleGoogleSignIn} className="btn btn-outline btn-primary btn-block">
-                                <FaGoogle className="mr-2"></FaGoogle>Google
-                            </button>
-                        </div>
+                        <SocialLogin></SocialLogin>
                     </div>
                 </div>
             </div>

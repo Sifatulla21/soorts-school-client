@@ -1,30 +1,18 @@
-import { getAuth, GoogleAuthProvider, signInWithPopup } from 'firebase/auth';
+import { getAuth } from 'firebase/auth';
 import React, { useContext, useState } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
-import { FaGoogle } from 'react-icons/fa';
 import img from '../../../assets/sports.jpg';
 import app from '../../../Firebase/firebase.config';
 import { AuthContext } from '../../../Provider/AuthProvider';
 import { useForm } from 'react-hook-form';
+import SocialLogin from '../../../Shared/SocialLogin/SocialLogin';
 const Login = () => {
     const { signIn } = useContext(AuthContext);
     const [errorMessage, setErrorMessage] = useState('');
-    const googleProvider = new GoogleAuthProvider();
     const auth = getAuth(app);
     const location = useLocation();
     const navigate = useNavigate();
     const from = location.state?.from?.pathname || "/";
-    const handleGoogleSignIn = () => {
-        signInWithPopup(auth, googleProvider)
-            .then(result => {
-                const user = result.user;
-                navigate(from);
-            })
-            .catch(error => {
-                console.log("Error:", error.message);
-            })
-
-    }
     const { register, handleSubmit, formState: { errors } } = useForm();
     const onSubmit = data => {
         signIn(data.email, data.password)
@@ -76,12 +64,7 @@ const Login = () => {
                             </div>
                         </form>
                         <p>New to Sports School? <Link className="text-primary font-bold" to="/signup">Sign Up</Link></p>
-                        <div className="divider">OR Sign In With</div>
-                        <div>
-                            <button onClick={handleGoogleSignIn} className="btn btn-outline btn-primary btn-block">
-                                <FaGoogle className="mr-2"></FaGoogle>Google
-                            </button>
-                        </div>
+                        <SocialLogin></SocialLogin>
                     </div>
                 </div>
             </div>
