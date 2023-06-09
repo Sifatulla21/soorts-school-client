@@ -1,14 +1,13 @@
 import { getAuth } from 'firebase/auth';
-import React, { useContext, useState } from 'react';
+import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
-import { FaGoogle } from 'react-icons/fa';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import img from '../../../assets/sports.jpg';
 import app from '../../../Firebase/firebase.config';
-import { AuthContext } from '../../../Provider/AuthProvider';
+import useAuth from '../../../Hooks/useAuth';
 import SocialLogin from '../../../Shared/SocialLogin/SocialLogin';
 const SignUp = () => {
-    const { createUser, updateUser } = useContext(AuthContext);
+    const { createUser, updateUser } = useAuth();
     const [errorMessage, setErrorMessage] = useState('');
     const auth = getAuth(app);
     const navigate = useNavigate();

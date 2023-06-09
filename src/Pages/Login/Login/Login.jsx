@@ -1,13 +1,13 @@
 import { getAuth } from 'firebase/auth';
-import React, { useContext, useState } from 'react';
+import React, { useState } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import img from '../../../assets/sports.jpg';
 import app from '../../../Firebase/firebase.config';
-import { AuthContext } from '../../../Provider/AuthProvider';
 import { useForm } from 'react-hook-form';
 import SocialLogin from '../../../Shared/SocialLogin/SocialLogin';
+import useAuth from '../../../Hooks/useAuth';
 const Login = () => {
-    const { signIn } = useContext(AuthContext);
+    const { signIn } = useAuth();
     const [errorMessage, setErrorMessage] = useState('');
     const auth = getAuth(app);
     const location = useLocation();
