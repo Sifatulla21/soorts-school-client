@@ -31,6 +31,8 @@ const Dashboard = () => {
                                     <li><Link>Payment History</Link></li>
                                 </>
                         }
+                        <div className="divider"></div>
+                        <li><Link to="/">Home</Link></li>
                     </ul>
 
                 </div>

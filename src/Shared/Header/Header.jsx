@@ -3,7 +3,6 @@ import { Link } from 'react-router-dom';
 import logo from '../../assets/logo.png';
 import { AuthContext } from '../../Provider/AuthProvider';
 const Header = () => {
-
     const { user, logOut } = useContext(AuthContext);
     const handleLogOut = () => {
         logOut()
