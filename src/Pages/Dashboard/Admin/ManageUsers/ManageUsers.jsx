@@ -110,13 +110,13 @@ const ManageUsers = () => {
                                 <td>{user.email}</td>
                                 <td>{user.role ? user.role : 'student'}</td>
                                 <td> {user.role === 'admin' ? <button disabled className="btn btn-square text-3xl">
-                                    <FaUserShield className="text-primary"></FaUserShield>
+                                    <FaUserShield></FaUserShield>
                                 </button> : <button onClick={() => handleMakeAdmin(user)} className="btn btn-square text-3xl">
-                                    <FaUserShield className="text-primary"></FaUserShield>
+                                    <FaUserShield className="text-success"></FaUserShield>
                                 </button>}
                                 </td>
                                 <td> {user.role === 'instractor' ? <button disabled className="btn btn-square text-3xl">
-                                        <FaUserGraduate className="text-primary"></FaUserGraduate>
+                                        <FaUserGraduate></FaUserGraduate>
                                     </button>  : <button onClick={() => handleMakeInstractor(user)} className="btn btn-square text-3xl"><FaUserGraduate className="text-primary"></FaUserGraduate></button>}
                                 </td>
                                 <td>
