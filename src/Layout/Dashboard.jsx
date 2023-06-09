@@ -1,11 +1,10 @@
 import React from 'react';
 import { Link, Outlet } from 'react-router-dom';
 import useAdmin from '../Hooks/useAdmin';
+import useInstractor from '../Hooks/useInstractor';
 
 const Dashboard = () => {
-    //TODO
-    // const isAdmin = true;
-    const isInstractor = false;
+    const [isInstractor] = useInstractor();
     const [isAdmin] = useAdmin();
     return (
         <div>
