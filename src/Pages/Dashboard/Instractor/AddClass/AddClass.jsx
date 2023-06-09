@@ -1,7 +1,7 @@
 import { useForm } from 'react-hook-form';
-import useAxiosSecure from "../../../hooks/useAxiosSecure";
+import useAxiosSecure from "../../../../hooks/useAxiosSecure";
 import Swal from "sweetalert2";
-import useAuth from '../../../Hooks/useAuth';
+import useAuth from '../../../../Hooks/useAuth';
 
 const img_hosting_token = import.meta.env.VITE_IMAGE_UPLOAD_TOKEN;
 const AddClass = () => {

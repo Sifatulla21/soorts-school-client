@@ -21,11 +21,11 @@ const Dashboard = () => {
                         {
                             isAdmin ? <>
                                 <li><Link to="manageusers">Manage Users</Link></li>
-                                <li><Link>Manage Classes</Link></li>
+                                <li><Link to="manageclasses">Manage Classes</Link></li>
                             </> : isInstractor ?
                                 <>
                                     <li><Link to="addclass">Add A Class</Link></li>
-                                    <li><Link>My Classes</Link></li>
+                                    <li><Link to="myclasses">My Classes</Link></li>
                                 </> : <>
                                     <li><Link>My Selected Classes</Link></li>
                                     <li><Link>My Enrolled Classes</Link></li>
