@@ -10,9 +10,6 @@ const ManageClass = () => {
         const res = await axiosSecure.get('/classes')
         return res.data;
     });
-    let approved;
-    let denied;
-    // const pending;
     const handleFeedback = cls =>{
 
     }
