@@ -27,7 +27,7 @@ const Dashboard = () => {
                                     <li><Link to="addclass">Add A Class</Link></li>
                                     <li><Link to="myclasses">My Classes</Link></li>
                                 </> : <>
-                                    <li><Link>My Selected Classes</Link></li>
+                                    <li><Link to="selectedclass">My Selected Classes</Link></li>
                                     <li><Link>My Enrolled Classes</Link></li>
                                     <li><Link>Payment History</Link></li>
                                 </>
