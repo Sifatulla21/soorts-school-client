@@ -10,8 +10,8 @@ const Header = () => {
     }
     const navItems = <>
         <li><Link to="/">Home </Link></li>
-        <li><Link to="/">Instractor</Link></li>
-        <li><Link to="/">Classes</Link></li>
+        <li><Link to="/instructors">Instructors</Link></li>
+        <li><Link to="/classes">Classes</Link></li>
         <li><Link to="/dashboard">Dashboard</Link></li>
         {user?.email ? <>
             <div className="flex">

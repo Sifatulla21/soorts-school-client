@@ -57,13 +57,13 @@ const AddClass = () => {
                         className="input input-bordered w-full " />
                 </div>
                 <div className="flex my-4">
-                    <div className="form-control w-full ml-4">
+                    <div className="form-control w-full">
                         <label className="label">
-                            <span className="label-text font-semibold">Instractor Name*</span>
+                            <span className="label-text font-semibold">Instructor Name*</span>
                         </label>
                         <input defaultValue={user.displayName} readOnly type="text" {...register("iName", { required: true })} placeholder="Type here" className="input input-bordered w-full " />
                     </div>
-                    <div className="form-control w-full ml-4">
+                    <div className="form-control w-full  ml-4">
                         <label className="label">
                             <span className="label-text font-semibold">Email*</span>
                         </label>
@@ -72,7 +72,7 @@ const AddClass = () => {
                 </div>
                 <div className="flex my-4">
 
-                <div className="form-control w-full ml-4">
+                <div className="form-control w-full">
                         <label className="label">
                             <span className="label-text font-semibold">Price*</span>
                         </label>

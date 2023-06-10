@@ -57,8 +57,8 @@ const ManageUsers = () => {
                 }
             })
     }
-    const handleMakeInstractor = user => {
-        fetch(`http://localhost:5000/users/instractor/${user._id}`, {
+    const handleMakeInstructor = user => {
+        fetch(`http://localhost:5000/users/instructor/${user._id}`, {
             method: 'PATCH'
         })
             .then(res => res.json())
@@ -68,7 +68,7 @@ const ManageUsers = () => {
                     Swal.fire({
                         position: 'center',
                         icon: 'success',
-                        title: `${user.name} is an instractor now`,
+                        title: `${user.name} is an instructor now`,
                         showConfirmButton: false,
                         timer: 1500
                     })
@@ -88,7 +88,7 @@ const ManageUsers = () => {
                             <th>Email</th>
                             <th>Role</th>
                             <th>Make Admin</th>
-                            <th>Make Instractor</th>
+                            <th>Make Instructor</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -107,16 +107,16 @@ const ManageUsers = () => {
                                 </td>
                                 <td>{user.name}</td>
                                 <td>{user.email}</td>
-                                <td className={`text-2xl font-semibold ${user.role === 'admin' ? 'text-success' : user.role === 'instractor' ? 'text-primary' : 'text-warning'}`}>{user.role ? user.role.charAt(0).toUpperCase() + user.role.slice(1) : 'Student'}</td>
+                                <td className={`text-2xl font-semibold ${user.role === 'admin' ? 'text-success' : user.role === 'instructor' ? 'text-primary' : 'text-warning'}`}>{user.role ? user.role.charAt(0).toUpperCase() + user.role.slice(1) : 'Student'}</td>
                                 <td className="text-center"> {user.role === 'admin' ? <button disabled className="btn btn-square text-3xl">
                                     <FaUserShield></FaUserShield>
                                 </button> : <button onClick={() => handleMakeAdmin(user)} className="btn btn-square text-3xl">
                                     <FaUserShield className="text-success"></FaUserShield>
                                 </button>}
                                 </td>
-                                <td className="text-center"> {user.role === 'instractor' ? <button disabled className="btn btn-square text-3xl">
+                                <td className="text-center"> {user.role === 'instructor' ? <button disabled className="btn btn-square text-3xl">
                                         <FaUserGraduate></FaUserGraduate>
-                                    </button>  : <button onClick={() => handleMakeInstractor(user)} className="btn btn-square text-3xl"><FaUserGraduate className="text-primary"></FaUserGraduate></button>}
+                                    </button>  : <button onClick={() => handleMakeInstructor(user)} className="btn btn-square text-3xl"><FaUserGraduate className="text-primary"></FaUserGraduate></button>}
                                 </td>
                             </tr>)
                         }

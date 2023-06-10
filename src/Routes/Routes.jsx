@@ -4,16 +4,18 @@ import {
 import Dashboard from "../Layout/Dashboard";
 import Error from "../Layout/Error";
 import Main from "../Layout/Main";
-import MyClass from "../Pages/Dashboard/Instractor/MyClass/MyClass";
-import AddClass from "../Pages/Dashboard/Instractor/AddClass/AddClass";
 import ErrorPage from "../Pages/ErrorPage/ErrorPage";
 import Home from "../Pages/Home/Home/Home";
 import Login from "../Pages/Login/Login/Login";
 import SignUp from "../Pages/Login/SignUp/Signup";
 import AdminRoute from "./AdminRoute";
-import InstractorRoute from "./InstractorRoute";
 import ManageUsers from "../Pages/Dashboard/Admin/ManageUsers/ManageUsers";
 import ManageClass from "../Pages/Dashboard/Admin/ManageClass/ManageClass";
+import Classes from "../Pages/Classes/Classes";
+import Instructor from "../Pages/Instructors/Instructor";
+import InstructorRoute from "./InstructorRoute";
+import AddClass from "../Pages/Dashboard/Instractor/AddClass/AddClass";
+import MyClass from "../Pages/Dashboard/Instractor/MyClass/MyClass";
 
   export const router = createBrowserRouter([
     {
@@ -32,6 +34,14 @@ import ManageClass from "../Pages/Dashboard/Admin/ManageClass/ManageClass";
           path: "signup",
           element:<SignUp></SignUp>
         },
+        {
+          path: "instructors",
+          element:<Instructor></Instructor>
+        },
+        {
+          path: "classes",
+          element:<Classes></Classes>
+        },
 
     ]
     },
@@ -42,11 +52,11 @@ import ManageClass from "../Pages/Dashboard/Admin/ManageClass/ManageClass";
       children:[
           {
               path:'addclass',
-              element:<InstractorRoute><AddClass></AddClass></InstractorRoute>
+              element:<InstructorRoute><AddClass></AddClass></InstructorRoute>
             },   
           {
               path:'myclasses',
-              element:<InstractorRoute><MyClass></MyClass></InstractorRoute>
+              element:<InstructorRoute><MyClass></MyClass></InstructorRoute>
             },   
           {
               path:'manageusers',

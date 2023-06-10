@@ -1,10 +1,10 @@
 import React from 'react';
 import { Link, Outlet } from 'react-router-dom';
 import useAdmin from '../Hooks/useAdmin';
-import useInstractor from '../Hooks/useInstractor';
+import useInstructor from '../Hooks/useInstractor';
 
 const Dashboard = () => {
-    const [isInstractor] = useInstractor();
+    const [isInstructor] = useInstructor();
     const [isAdmin] = useAdmin();
     return (
         <div>
@@ -22,7 +22,7 @@ const Dashboard = () => {
                             isAdmin ? <>
                                 <li><Link to="manageusers">Manage Users</Link></li>
                                 <li><Link to="manageclasses">Manage Classes</Link></li>
-                            </> : isInstractor ?
+                            </> : isInstructor ?
                                 <>
                                     <li><Link to="addclass">Add A Class</Link></li>
                                     <li><Link to="myclasses">My Classes</Link></li>
