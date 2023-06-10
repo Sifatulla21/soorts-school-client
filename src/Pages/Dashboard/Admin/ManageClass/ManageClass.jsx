@@ -11,7 +11,7 @@ const ManageClass = () => {
         const res = await axiosSecure.get('/classes')
         return res.data;
     });
-    const openModal = cls => {
+    const handleFeedback = cls => {
         Swal.fire({
             title: 'Give Feedback',
             html: '<textarea id="swal-input" class="swal2-input"></textarea>',
@@ -37,19 +37,7 @@ const ManageClass = () => {
                     .then(data => console.log(data))
             }
         });
-    }
-    const handleFeedback = cls => {
-        const feedback = "I am Sifatulla";
-        fetch(`http://localhost:5000/class/feedback/${cls._id}/feedback`, {
-            method: 'PATCH',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({ feedback }),
-        })
-            .then(res => res.json())
-            .then(data => console.log(data))
-    }
+    };
     const handleApproved = cls => {
         fetch(`http://localhost:5000/class/approved/${cls._id}`, {
             method: 'PATCH'
@@ -143,7 +131,7 @@ const ManageClass = () => {
                                 </button>}
                                 </td>
                                 <td>
-                                    <button onClick={() => openModal(cls)} className="btn btn-square text-3xl">
+                                    <button onClick={() => handleFeedback(cls)} className="btn btn-square text-3xl">
                                         <FaCommentAlt className="text-warning"></FaCommentAlt>
                                     </button>
                                 </td>

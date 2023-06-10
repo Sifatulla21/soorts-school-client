@@ -9,36 +9,36 @@ const ManageUsers = () => {
         const res = await axiosSecure.get('/users')
         return res.data;
     })
-    const handleDelete = user => {
-        Swal.fire({
-            title: 'Are you sure?',
-            text: 'You will not be able to revert this!',
-            icon: 'warning',
-            showCancelButton: true,
-            confirmButtonColor: '#3085d6',
-            cancelButtonColor: '#d33',
-            confirmButtonText: 'Yes, delete it!'
-        }).then((result) => {
-            if (result.isConfirmed) {
+    // const handleDelete = user => {
+    //     Swal.fire({
+    //         title: 'Are you sure?',
+    //         text: 'You will not be able to revert this!',
+    //         icon: 'warning',
+    //         showCancelButton: true,
+    //         confirmButtonColor: '#3085d6',
+    //         cancelButtonColor: '#d33',
+    //         confirmButtonText: 'Yes, delete it!'
+    //     }).then((result) => {
+    //         if (result.isConfirmed) {
 
-                fetch(`http://localhost:5000/users/delete/${user._id}`, {
-                    method: 'DELETE'
-                })
-                    .then(res => res.json())
-                    .then(data => {
-                        console.log(data);
-                        if (data.deletedCount > 0) {
-                            refetch();
-                            Swal.fire(
-                                'Deleted!',
-                                'User has been deleted.',
-                                'success'
-                            );                       
-                        }
-                    })
-            }
-        });
-    };
+    //             fetch(`http://localhost:5000/users/delete/${user._id}`, {
+    //                 method: 'DELETE'
+    //             })
+    //                 .then(res => res.json())
+    //                 .then(data => {
+    //                     console.log(data);
+    //                     if (data.deletedCount > 0) {
+    //                         refetch();
+    //                         Swal.fire(
+    //                             'Deleted!',
+    //                             'User has been deleted.',
+    //                             'success'
+    //                         );                       
+    //                     }
+    //                 })
+    //         }
+    //     });
+    // };
     const handleMakeAdmin = user => {
         fetch(`http://localhost:5000/users/admin/${user._id}`, {
             method: 'PATCH'
@@ -89,7 +89,6 @@ const ManageUsers = () => {
                             <th>Role</th>
                             <th>Make Admin</th>
                             <th>Make Instractor</th>
-                            <th>Delete</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -108,21 +107,16 @@ const ManageUsers = () => {
                                 </td>
                                 <td>{user.name}</td>
                                 <td>{user.email}</td>
-                                <td>{user.role ? user.role : 'student'}</td>
-                                <td> {user.role === 'admin' ? <button disabled className="btn btn-square text-3xl">
+                                <td className={`text-2xl font-semibold ${user.role === 'admin' ? 'text-success' : user.role === 'instractor' ? 'text-primary' : 'text-warning'}`}>{user.role ? user.role.charAt(0).toUpperCase() + user.role.slice(1) : 'Student'}</td>
+                                <td className="text-center"> {user.role === 'admin' ? <button disabled className="btn btn-square text-3xl">
                                     <FaUserShield></FaUserShield>
                                 </button> : <button onClick={() => handleMakeAdmin(user)} className="btn btn-square text-3xl">
                                     <FaUserShield className="text-success"></FaUserShield>
                                 </button>}
                                 </td>
-                                <td> {user.role === 'instractor' ? <button disabled className="btn btn-square text-3xl">
+                                <td className="text-center"> {user.role === 'instractor' ? <button disabled className="btn btn-square text-3xl">
                                         <FaUserGraduate></FaUserGraduate>
                                     </button>  : <button onClick={() => handleMakeInstractor(user)} className="btn btn-square text-3xl"><FaUserGraduate className="text-primary"></FaUserGraduate></button>}
-                                </td>
-                                <td>
-                                    <button onClick={() => handleDelete(user)} className="btn btn-square text-3xl">
-                                        <FaUserTimes className="text-red-600"></FaUserTimes>
-                                    </button>
                                 </td>
                             </tr>)
                         }

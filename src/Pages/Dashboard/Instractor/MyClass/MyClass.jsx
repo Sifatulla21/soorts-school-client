@@ -1,32 +1,61 @@
 import { useQuery } from '@tanstack/react-query';
 import React from 'react';
+import { FaEdit } from 'react-icons/fa';
 import useAuth from '../../../../Hooks/useAuth';
 import useAxiosSecure from '../../../../Hooks/useAxiosSecure';
-import MyClassCard from './MyClassCard';
 
 const MyClass = () => {
-    const [axiosSecure] = useAxiosSecure();
-    const { user } = useAuth();
-    const { data: classes = [], refetch } = useQuery(['classes'], async () => {
-        const res = await axiosSecure.get(`/myclasses?email=${user?.email}`);
-        return res.data;
-    });
-    return (
-        <div>
-            <h1>My Classes: {classes.length} </h1>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-16">
-
+  const [axiosSecure] = useAxiosSecure();
+  const { user } = useAuth();
+  const { data: classes = [], refetch } = useQuery(['classes'], async () => {
+    const res = await axiosSecure.get(`/myclasses?email=${user?.email}`);
+    return res.data;
+  });
+  return (
+    <div>
+      <h1>My Classes: {classes.length} </h1>
+      <div className="overflow-x-auto">
+        <table className="table">
+          <thead>
+            <tr>
+              <th>#</th>
+              <th>Image</th>
+              <th>Name</th>
+              <th>Available Seat</th>
+              <th>Price</th>
+              <th>Status</th>
+              <th>Feedback</th>
+              <th>Update</th>
+            </tr>
+          </thead>
+          <tbody>
             {
-              classes.map(cls => <MyClassCard
-                key={cls._id}
-                cls={cls}
-              >
+              classes.map((cls, index) => <tr key={cls._id}>
+                <td>
+                  {index + 1}
+                </td>
+                <td>
+                  <div className="avatar">
+                    <div className="mask mask-squircle w-12 h-12">
+                      <img src={cls.image} alt="Avatar Tailwind CSS Component" />
 
-              </MyClassCard>)
+                    </div>
+                  </div>
+                </td>
+                <td>{cls.name}</td>
+                <td>{cls.seat}</td>
+                <td>{cls.price}</td>
+                <td className={`text-2xl font-semibold ${cls.status === 'Approved' ? 'text-success' : cls.status === 'Denied' ? 'text-red-600' : 'text-warning'}`}>{cls.status ? cls.status: 'Pending'}</td>
+                <td>{cls.status === 'Denied' && cls?.feedback}</td>
+                <td><button className="btn btn-square text-3xl"><FaEdit className="text-primary"></FaEdit></button></td>
+              </tr>)
             }
-            </div>
-        </div>
-    );
+          </tbody>
+
+        </table>
+      </div>
+    </div>
+  );
 };
 
 export default MyClass;
