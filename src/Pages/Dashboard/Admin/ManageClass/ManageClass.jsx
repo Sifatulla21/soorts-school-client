@@ -1,17 +1,54 @@
 import { useQuery } from '@tanstack/react-query';
-import React from 'react';
+import React, { useState } from 'react';
 import { FaBan, FaCheck, FaCommentAlt } from 'react-icons/fa';
 import Swal from 'sweetalert2';
 import useAxiosSecure from '../../../../Hooks/useAxiosSecure';
 
-const ManageClass = () => { 
+const ManageClass = () => {
     const [axiosSecure] = useAxiosSecure();
+    const [feedback, setFeedback] = useState('');
     const { data: classes = [], refetch } = useQuery(['classes'], async () => {
         const res = await axiosSecure.get('/classes')
         return res.data;
     });
-    const handleFeedback = cls =>{
-
+    const openModal = cls => {
+        Swal.fire({
+            title: 'Give Feedback',
+            html: '<textarea id="swal-input" class="swal2-input"></textarea>',
+            focusConfirm: false,
+            preConfirm: () => {
+                const text = Swal.getPopup().querySelector('#swal-input').value;
+                if (!text) {
+                    Swal.showValidationMessage('Please enter some text');
+                }
+                return text;
+            }
+        }).then((result) => {
+            if (result.isConfirmed) {
+                setFeedback(result.value);
+                fetch(`http://localhost:5000/class/feedback/${cls._id}/feedback`, {
+                    method: 'PATCH',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({ feedback }),
+                })
+                    .then(res => res.json())
+                    .then(data => console.log(data))
+            }
+        });
+    }
+    const handleFeedback = cls => {
+        const feedback = "I am Sifatulla";
+        fetch(`http://localhost:5000/class/feedback/${cls._id}/feedback`, {
+            method: 'PATCH',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ feedback }),
+        })
+            .then(res => res.json())
+            .then(data => console.log(data))
     }
     const handleApproved = cls => {
         fetch(`http://localhost:5000/class/approved/${cls._id}`, {
@@ -91,22 +128,22 @@ const ManageClass = () => {
                                 <td className={`text-2xl font-semibold ${cls.status === 'Approved' ? 'text-success' : cls.status === 'Denied' ? 'text-red-600' : 'text-warning'}`}>{cls.status ? cls.status : 'Pending'}</td>
                                 <td> {cls.status === 'Approved' ? <button disabled className="btn btn-square text-3xl">
                                     <FaCheck></FaCheck>
-                                </button> : cls.status === 'Denied' ?  <button disabled className="btn btn-square text-3xl">
+                                </button> : cls.status === 'Denied' ? <button disabled className="btn btn-square text-3xl">
                                     <FaCheck></FaCheck>
-                                </button> : <button onClick={() =>handleApproved(cls)}  className="btn btn-square text-3xl">
+                                </button> : <button onClick={() => handleApproved(cls)} className="btn btn-square text-3xl">
                                     <FaCheck className="text-success"></FaCheck>
                                 </button>}
                                 </td>
                                 <td> {cls.status === 'Approved' ? <button disabled className="btn btn-square text-3xl">
-                                        <FaBan></FaBan >
-                                    </button>: cls.status === 'Denied' ? <button disabled className="btn btn-square text-3xl">
-                                        <FaBan></FaBan >
-                                    </button> : <button onClick={() =>handleDeny(cls)} className="btn btn-square text-3xl">
-                                        <FaBan  className="text-red-600"></FaBan >
-                                    </button>}
+                                    <FaBan></FaBan >
+                                </button> : cls.status === 'Denied' ? <button disabled className="btn btn-square text-3xl">
+                                    <FaBan></FaBan >
+                                </button> : <button onClick={() => handleDeny(cls)} className="btn btn-square text-3xl">
+                                    <FaBan className="text-red-600"></FaBan >
+                                </button>}
                                 </td>
                                 <td>
-                                    <button onClick={() => handleFeedback(cls)} className="btn btn-square text-3xl">
+                                    <button onClick={() => openModal(cls)} className="btn btn-square text-3xl">
                                         <FaCommentAlt className="text-warning"></FaCommentAlt>
                                     </button>
                                 </td>
@@ -115,6 +152,9 @@ const ManageClass = () => {
                     </tbody>
 
                 </table>
+            </div>
+            <div>
+
             </div>
         </div>
     );

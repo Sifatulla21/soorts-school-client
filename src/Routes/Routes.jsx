@@ -14,6 +14,7 @@ import AdminRoute from "./AdminRoute";
 import InstractorRoute from "./InstractorRoute";
 import ManageUsers from "../Pages/Dashboard/Admin/ManageUsers/ManageUsers";
 import ManageClass from "../Pages/Dashboard/Admin/ManageClass/ManageClass";
+import Feedback from "../Pages/Dashboard/Admin/ManageClass/Feedback";
 
   export const router = createBrowserRouter([
     {
@@ -55,6 +56,10 @@ import ManageClass from "../Pages/Dashboard/Admin/ManageClass/ManageClass";
           {
               path:'manageclasses',
               element:<AdminRoute><ManageClass></ManageClass></AdminRoute>
+          },   
+          {
+              path:'manageclasses/feedback',
+              element:<AdminRoute><Feedback></Feedback></AdminRoute>
           },   
       ]
   },

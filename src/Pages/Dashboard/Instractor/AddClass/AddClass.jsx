@@ -46,7 +46,7 @@ const AddClass = () => {
     
     
     return (
-        <div className="w-full px-10">
+        <div className="w-1/2 p-10 border">
             <form onSubmit={handleSubmit(onSubmit)}>
                 <div className="form-control w-full mb-4">
                     <label className="label">
