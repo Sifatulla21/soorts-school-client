@@ -8,37 +8,7 @@ const ManageUsers = () => {
     const { data: users = [], refetch } = useQuery(['users'], async () => {
         const res = await axiosSecure.get('/users')
         return res.data;
-    })
-    // const handleDelete = user => {
-    //     Swal.fire({
-    //         title: 'Are you sure?',
-    //         text: 'You will not be able to revert this!',
-    //         icon: 'warning',
-    //         showCancelButton: true,
-    //         confirmButtonColor: '#3085d6',
-    //         cancelButtonColor: '#d33',
-    //         confirmButtonText: 'Yes, delete it!'
-    //     }).then((result) => {
-    //         if (result.isConfirmed) {
-
-    //             fetch(`http://localhost:5000/users/delete/${user._id}`, {
-    //                 method: 'DELETE'
-    //             })
-    //                 .then(res => res.json())
-    //                 .then(data => {
-    //                     console.log(data);
-    //                     if (data.deletedCount > 0) {
-    //                         refetch();
-    //                         Swal.fire(
-    //                             'Deleted!',
-    //                             'User has been deleted.',
-    //                             'success'
-    //                         );                       
-    //                     }
-    //                 })
-    //         }
-    //     });
-    // };
+    });
     const handleMakeAdmin = user => {
         fetch(`http://localhost:5000/users/admin/${user._id}`, {
             method: 'PATCH'
