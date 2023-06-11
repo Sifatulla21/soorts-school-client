@@ -18,6 +18,7 @@ import InstructorRoute from "./InstructorRoute";
 import AddClass from "../Pages/Dashboard/Instractor/AddClass/AddClass";
 import MyClass from "../Pages/Dashboard/Instractor/MyClass/MyClass";
 import SelectedClass from "../Pages/Dashboard/User/SelectedClass/SelectedClass";
+import UpdateMyClass from "../Pages/Dashboard/Instractor/MyClass/UpdateMyClass";
 
   export const router = createBrowserRouter([
     {
@@ -59,6 +60,11 @@ import SelectedClass from "../Pages/Dashboard/User/SelectedClass/SelectedClass";
           {
               path:'myclasses',
               element:<InstructorRoute><MyClass></MyClass></InstructorRoute>
+            },   
+          {
+              path:'myclasses/:id',
+              element:<InstructorRoute><UpdateMyClass></UpdateMyClass></InstructorRoute>,
+              loader: ({params}) => fetch(`http://localhost:5000/getupdateclass/${params.id}`)
             },   
           {
               path:'manageusers',

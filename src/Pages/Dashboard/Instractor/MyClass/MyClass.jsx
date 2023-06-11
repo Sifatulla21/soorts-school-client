@@ -1,6 +1,7 @@
 import { useQuery } from '@tanstack/react-query';
 import React from 'react';
 import { FaEdit } from 'react-icons/fa';
+import { Link } from 'react-router-dom';
 import useAuth from '../../../../Hooks/useAuth';
 import useAxiosSecure from '../../../../Hooks/useAxiosSecure';
 
@@ -47,7 +48,7 @@ const MyClass = () => {
                 <td>{cls.price}</td>
                 <td className={`text-2xl font-semibold ${cls.status === 'Approved' ? 'text-success' : cls.status === 'Denied' ? 'text-red-600' : 'text-warning'}`}>{cls.status ? cls.status: 'Pending'}</td>
                 <td>{cls.status === 'Denied' && cls?.feedback}</td>
-                <td><button className="btn btn-square text-3xl"><FaEdit className="text-primary"></FaEdit></button></td>
+                <td><Link to={`${cls._id}`}><button className="btn btn-square text-3xl"><FaEdit className="text-primary"></FaEdit></button></Link></td>
               </tr>)
             }
           </tbody>
