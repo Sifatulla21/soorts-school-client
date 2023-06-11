@@ -16,7 +16,6 @@ const UpdateMyClass = () => {
                 axiosSecure.put(`/updateclass/${_id}`, newItem)
                 .then(data => {
                     if(data.data.modifiedCount > 0){
-                        reset();
                         Swal.fire({
                             position: 'center',
                             icon: 'success',

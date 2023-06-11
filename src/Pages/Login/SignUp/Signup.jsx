@@ -20,7 +20,7 @@ const SignUp = () => {
         createUser(data.email, data.password)
         .then(result => {
             updateUser(result.user, data.name, data.photo);
-            const savedUser = {name: data.name, email:data.email, photoURL: data.photo}
+            const savedUser = {name: data.name, email:data.email, photoURL: data.photo, role: 'student'}
             fetch('http://localhost:5000/users',{
                 method: 'POST',
                 headers: {

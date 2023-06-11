@@ -1,6 +1,7 @@
 import { useQuery } from '@tanstack/react-query';
 import React from 'react';
 import { FaRegCreditCard, FaTrashAlt } from 'react-icons/fa';
+import { Link } from 'react-router-dom';
 import Swal from 'sweetalert2';
 import useAuth from '../../../../Hooks/useAuth';
 import useAxiosSecure from '../../../../Hooks/useAxiosSecure';
@@ -79,7 +80,7 @@ const SelectedClass = () => {
                 <td>{selectedClasse.iName}</td>
                 <td>{selectedClasse.price}</td>
                 <td><button onClick={() => handleDelete(selectedClasse)} className="btn btn-square text-3xl"><FaTrashAlt className="text-red-500"></FaTrashAlt></button></td>
-                <td><button onClick={() => handlePayment(selectedClasse)} className="btn btn-square text-3xl"><FaRegCreditCard className="text-primary"></FaRegCreditCard></button></td>
+                <td><Link to={`payment/${selectedClasse._id}`}><button onClick={() => handlePayment(selectedClasse)} className="btn btn-square text-3xl"><FaRegCreditCard className="text-primary"></FaRegCreditCard></button></Link></td>
               </tr>)
             }
           </tbody>

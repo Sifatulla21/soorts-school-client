@@ -19,6 +19,7 @@ import AddClass from "../Pages/Dashboard/Instractor/AddClass/AddClass";
 import MyClass from "../Pages/Dashboard/Instractor/MyClass/MyClass";
 import SelectedClass from "../Pages/Dashboard/User/SelectedClass/SelectedClass";
 import UpdateMyClass from "../Pages/Dashboard/Instractor/MyClass/UpdateMyClass";
+import Payment from "../Pages/Dashboard/User/Payment/Payment";
 
   export const router = createBrowserRouter([
     {
@@ -77,6 +78,11 @@ import UpdateMyClass from "../Pages/Dashboard/Instractor/MyClass/UpdateMyClass";
           {
               path:'selectedclass',
               element:<PrivateRoute><SelectedClass></SelectedClass></PrivateRoute>
+          },  
+          {
+              path:'selectedclass/payment/:id',
+              element:<PrivateRoute><Payment></Payment></PrivateRoute>,
+              loader: ({params}) => fetch(`http://localhost:5000/payment/${params.id}`)
           },  
       ]
   },
