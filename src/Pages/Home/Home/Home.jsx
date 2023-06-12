@@ -3,6 +3,7 @@ import PopularClass from '../PopularClass/PopularClass';
 import PopularInstractor from './PopularInstractor/PopularInstractor';
 import Slider from '../Slider/Slider';
 import { Helmet } from 'react-helmet-async';
+import UserReview from '../UserReview/UserReview';
 
 const Home = () => {
     useEffect(() => {
@@ -18,6 +19,7 @@ const Home = () => {
             <Slider></Slider>
             <PopularClass></PopularClass>
             <PopularInstractor></PopularInstractor>
+            <UserReview></UserReview>
         </div>
     );
 };

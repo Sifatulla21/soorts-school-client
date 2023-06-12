@@ -22,7 +22,7 @@ const ThemeToggle = () => {
       <div>
           {/* <input type="checkbox"  checked /> */}
     <button
-      className="me-24 border-2 border-rose-600 rounded-full w-10 h-6 focus:outline-none"
+      className="me-12 border-2 border-rose-600 rounded-full w-10 h-6 focus:outline-none"
       onClick={toggleTheme}
     >
       <div

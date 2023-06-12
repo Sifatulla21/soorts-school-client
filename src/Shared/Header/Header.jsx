@@ -41,7 +41,7 @@ const Header = () => {
                             {navItems}
                         </ul>
                     </div>
-                    <Link><img className="h-18 w-24 ml-24" src={logo} alt="" /></Link>
+                    <Link><img className="h-18 w-24 ml-12" src={logo} alt="" /></Link>
                 </div>
                 <div className="navbar-center hidden lg:flex">
                     <ul className="menu menu-horizontal px-1">
