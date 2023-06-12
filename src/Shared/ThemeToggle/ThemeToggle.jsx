@@ -22,13 +22,12 @@ const ThemeToggle = () => {
       <div>
           {/* <input type="checkbox"  checked /> */}
     <button
-    className=""
-      className="rounded-full w-10 h-6 focus:outline-none"
+      className="me-24 border-2 border-rose-600 rounded-full w-10 h-6 focus:outline-none"
       onClick={toggleTheme}
     >
       <div
 
-        className={`bg-red-600 dark:bg-gray-800 rounded-full shadow-md w-4 h-4 transform ${
+        className={`bg-black  rounded-full shadow-md w-4 h-4 transform ${
           isDarkMode ? 'translate-x-4' : ''
         } transition-transform duration-300`}
       ></div>

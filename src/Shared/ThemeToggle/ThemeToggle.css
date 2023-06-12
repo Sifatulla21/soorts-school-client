@@ -1,7 +1,7 @@
 /* Example dark mode styles */
 .dark {
-    --bg-color: rgb(34, 34, 34);
-    --text-color: #fff;
+    --bg-color: rgba(0, 0, 0, 0.678);
+    --text-color: rgb(0, 0, 0);
   }
   
   /* Apply the colors to elements */

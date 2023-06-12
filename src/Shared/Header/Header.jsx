@@ -49,7 +49,7 @@ const Header = () => {
                     </ul>
                 </div>
                 <div className="navbar-end">
-                    {/* <ThemeToggle></ThemeToggle> */}
+                    <ThemeToggle></ThemeToggle>
                 </div>
             </div>
         </>
