@@ -47,10 +47,9 @@ const Classes = () => {
 
     return (
         <div className="flex items-center justify-center">
-            {/* <h1 className="text-3xl font-bold">Classes: {classes.length}</h1> */}
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12 m-12">
                 {
-                    classes.map(cls => <div className={` rounded-2xl shadow-xl p-8 mx-auto max-w-2xl ${cls.seat == 0 ? 'bg-red-500' : 'bg-white'}`}>
+                    classes.map(cls => <div key={cls._id} className={` rounded-2xl shadow-xl p-8 mx-auto max-w-2xl ${cls.seat == 0 ? 'bg-red-500' : 'bg-white'}`}>
                         <div className="mb-4 md:mb-0">
                             <img
                                 src={cls.image}
@@ -58,10 +57,11 @@ const Classes = () => {
                                 className="w-48 h-48 object-cover rounded-lg"
                             />
                         </div>
-                        <div>
+                        <div className="font-bold">
                             <h2 className="text-xl font-bold mb-2">{cls.name}</h2>
                             <p className="mb-4">Instractor Name: {cls.iName}</p>
                             <p className="mb-4">Price: {cls.price}</p>
+                            <p className="mb-4">Total Enrolled: {cls.enrolled}</p>
                             <p className="mb-4">Available Seat: {cls.seat}</p>
                             <button disabled={isAdmin || isInstructor || cls.seat == 0} onClick={() => handleSelect(cls)} className="btn btn-primary btn-outline w-full font-bold">Select <FaArrowAltCircleRight className="text-xl"></FaArrowAltCircleRight></button>
                         </div>

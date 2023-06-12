@@ -23,6 +23,7 @@ const MyClass = () => {
               <th>Image</th>
               <th>Name</th>
               <th>Available Seat</th>
+              <th>Enrolled Student</th>
               <th>Price</th>
               <th>Status</th>
               <th>Feedback</th>
@@ -44,7 +45,8 @@ const MyClass = () => {
                   </div>
                 </td>
                 <td>{cls.name}</td>
-                <td>{cls.seat}</td>
+                <td className="text-center">{cls.seat}</td>
+                <td className="text-center">0</td>
                 <td>{cls.price}</td>
                 <td className={`text-2xl font-semibold ${cls.status === 'Approved' ? 'text-success' : cls.status === 'Denied' ? 'text-red-600' : 'text-warning'}`}>{cls.status ? cls.status: 'Pending'}</td>
                 <td>{cls.status === 'Denied' && cls?.feedback}</td>
