@@ -25,7 +25,7 @@ const SelectedClass = () => {
     }).then((result) => {
       if (result.isConfirmed) {
 
-        fetch(`http://localhost:5000/selectedclasses/${classes._id}`, {
+        fetch(`https://sports-school-server-theta.vercel.app/selectedclasses/${classes._id}`, {
           method: 'DELETE'
         })
           .then(res => res.json())

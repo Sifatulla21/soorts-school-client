@@ -1,7 +1,8 @@
 import React, { useEffect } from 'react';
 import PopularClass from '../PopularClass/PopularClass';
-import PopularInstractor from '../PopularClass/PopularInstractor/PopularInstractor';
+import PopularInstractor from './PopularInstractor/PopularInstractor';
 import Slider from '../Slider/Slider';
+import { Helmet } from 'react-helmet-async';
 
 const Home = () => {
     useEffect(() => {
@@ -10,11 +11,14 @@ const Home = () => {
     }, []);
     return (
 
-            <div>
-                <Slider></Slider>
-                <PopularClass></PopularClass>
-                <PopularInstractor></PopularInstractor>
-            </div>
+        <div>
+            <Helmet>
+                <title>Home | Sports Basic</title>
+            </Helmet>
+            <Slider></Slider>
+            <PopularClass></PopularClass>
+            <PopularInstractor></PopularInstractor>
+        </div>
     );
 };
 

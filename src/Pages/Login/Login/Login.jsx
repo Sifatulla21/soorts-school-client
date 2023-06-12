@@ -6,6 +6,7 @@ import app from '../../../Firebase/firebase.config';
 import { useForm } from 'react-hook-form';
 import SocialLogin from '../../../Shared/SocialLogin/SocialLogin';
 import useAuth from '../../../Hooks/useAuth';
+import {Helmet} from 'react-helmet-async';
 const Login = () => {
     const { signIn } = useAuth();
     const [errorMessage, setErrorMessage] = useState('');
@@ -32,6 +33,9 @@ const Login = () => {
     }
     return (
         <div className="hero min-h-screen bg-base-200">
+            <Helmet>
+                <title>Login | Sports Basic</title>
+            </Helmet>
             <div className="hero-content flex-col lg:flex-row">
                 <div className="w-1/2 mr-12">
                     <img src={img} alt="" />

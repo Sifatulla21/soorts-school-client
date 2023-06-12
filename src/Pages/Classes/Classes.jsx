@@ -7,6 +7,7 @@ import Swal from 'sweetalert2';
 import useAuth from '../../Hooks/useAuth';
 import { motion } from "framer-motion";
 import { Fade, AttentionSeeker } from "react-awesome-reveal";
+import { Helmet } from 'react-helmet-async';
 
 const Classes = () => {
     const [isInstructor] = useInstructor();
@@ -49,6 +50,9 @@ const Classes = () => {
 
     return (
         <div className="flex items-center justify-center">
+            <Helmet>
+                <title>Classes | Sports Basic</title>
+            </Helmet>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12 m-12">
                 {
                     classes.map(cls =>

@@ -24,13 +24,13 @@ const PopularInstractor = () => {
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12 m-12">
                     {
                         popularinstructors.map(popularinstructor =>
-                            <AttentionSeeker>
+                            <AttentionSeeker  key={popularinstructor._id}>
                                 <motion.div
                                     initial={{ opacity: 1, scale: 1 }}
                                     whileHover={{ opacity: 2, scale: 1.1 }}
                                     transition={{ duration: 0.3 }}
                                 >
-                                    <div key={popularinstructor._id} className="rounded-2xl shadow-xl p-8 mx-auto max-w-2xl bg-blue-100">
+                                    <div className="rounded-2xl shadow-xl p-8 mx-auto max-w-2xl bg-blue-100">
                                        
                                         <div className="mb-4 md:mb-0">
                                             <img

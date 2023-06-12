@@ -67,7 +67,7 @@ import PaymentHistory from "../Pages/Dashboard/User/Payment/PaymentHistory";
           {
               path:'myclasses/:id',
               element:<InstructorRoute><UpdateMyClass></UpdateMyClass></InstructorRoute>,
-              loader: ({params}) => fetch(`http://localhost:5000/getupdateclass/${params.id}`)
+              loader: ({params}) => fetch(`https://sports-school-server-theta.vercel.app/getupdateclass/${params.id}`)
             },   
           {
               path:'manageusers',
@@ -84,7 +84,7 @@ import PaymentHistory from "../Pages/Dashboard/User/Payment/PaymentHistory";
           {
               path:'selectedclass/payment/:id',
               element:<PrivateRoute><Payment></Payment></PrivateRoute>,
-              loader: ({params}) => fetch(`http://localhost:5000/payment/${params.id}`)
+              loader: ({params}) => fetch(`https://sports-school-server-theta.vercel.app/payment/${params.id}`)
           },  
           {
               path:'enrolledclass',

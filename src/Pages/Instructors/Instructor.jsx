@@ -3,7 +3,7 @@ import React from 'react';
 import useAxiosSecure from '../../Hooks/useAxiosSecure';
 import { motion } from "framer-motion";
 import { Fade, AttentionSeeker } from "react-awesome-reveal";
-
+import {Helmet} from 'react-helmet-async';
 const Instructor = () => {
     const [axiosSecure] = useAxiosSecure();
     const { data: users = [], refetch } = useQuery(['instractor'], async () => {
@@ -12,6 +12,10 @@ const Instructor = () => {
     })
     return (
         <div className="w-1/2 mx-auto">
+            <Helmet>
+                <title>Instractor | Sports Basic</title>
+            </Helmet>
+                
             <h1 className="text-3xl font-bold">Instructors: {users.length}</h1>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12 m-12">
                 {

@@ -3,12 +3,16 @@ import { FaChalkboardTeacher, FaCheckCircle, FaHistory, FaHome, FaListOl, FaPlus
 import { Link, Outlet } from 'react-router-dom';
 import useAdmin from '../Hooks/useAdmin';
 import useInstructor from '../Hooks/useInstractor';
+import { Helmet } from 'react-helmet-async';
 
 const Dashboard = () => {
     const [isInstructor] = useInstructor();
     const [isAdmin] = useAdmin();
     return (
         <div>
+            <Helmet>
+                <title>Dashboard | Sports Basic</title>
+            </Helmet>
             <div className="drawer lg:drawer-open">
                 <input id="my-drawer-2" type="checkbox" className="drawer-toggle" />
                 <div className="drawer-content flex flex-col items-center justify-center">
@@ -28,7 +32,6 @@ const Dashboard = () => {
                                     <li><Link to="myclasses"><FaListOl className="text-2xl"></FaListOl> My Classes</Link></li>
                                     <li><Link to="addclass"><FaPlusCircle className="text-2xl"></FaPlusCircle> Add A Class</Link></li>
                                 </> : <>
-                                <FaRegBookmark></FaRegBookmark>
                                     <li><Link to="selectedclass"><FaRegBookmark className="text-2xl"></FaRegBookmark>My Selected Classes</Link></li>
                                     <li><Link to="enrolledclass"><FaCheckCircle className="text-2xl"></FaCheckCircle>  My Enrolled Classes</Link></li>
                                     <li><Link to="paymenthistory"><FaHistory className="text-2xl"></FaHistory> Payment History</Link></li>

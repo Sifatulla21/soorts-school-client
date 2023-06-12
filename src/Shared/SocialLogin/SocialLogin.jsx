@@ -15,7 +15,7 @@ const SocialLogin = () => {
             .then(result => {
                 const user = result.user;
                 const savedUser = {name: user.displayName, email:user.email, photoURL: user.photoURL}
-                fetch('http://localhost:5000/users',{
+                fetch('https://sports-school-server-theta.vercel.app/users',{
                     method: 'POST',
                     headers: {
                         'content-type' : 'application/json'

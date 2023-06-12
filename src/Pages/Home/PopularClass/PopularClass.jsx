@@ -20,7 +20,7 @@ const PopularClass = () => {
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12 m-12">
                     {
                         popularClasses.map(cls =>
-                            <AttentionSeeker>
+                            <AttentionSeeker  key={cls._id}>
 
                                 <motion.div
                                     initial={{ opacity: 1, scale: 1 }}
@@ -28,7 +28,7 @@ const PopularClass = () => {
                                     transition={{ duration: 0.3 }}
                                 >
 
-                                    <div key={cls._id} className="rounded-2xl shadow-xl p-8 mx-auto max-w-2xl bg-blue-100">
+                                    <div className="rounded-2xl shadow-xl p-8 mx-auto max-w-2xl bg-blue-100">
                                       
                                         <div className="mb-4 md:mb-0">
 

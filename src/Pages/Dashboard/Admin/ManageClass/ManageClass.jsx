@@ -3,7 +3,6 @@ import React, { useState } from 'react';
 import { FaBan, FaCheck, FaCommentAlt } from 'react-icons/fa';
 import Swal from 'sweetalert2';
 import useAxiosSecure from '../../../../Hooks/useAxiosSecure';
-
 const ManageClass = () => {
     const [axiosSecure] = useAxiosSecure();
     const [feedback, setFeedback] = useState('');
@@ -26,7 +25,7 @@ const ManageClass = () => {
         }).then((result) => {
             if (result.isConfirmed) {
                 setFeedback(result.value);
-                fetch(`http://localhost:5000/class/feedback/${cls._id}/feedback`, {
+                fetch(`https://sports-school-server-theta.vercel.app/class/feedback/${cls._id}/feedback`, {
                     method: 'PATCH',
                     headers: {
                         'Content-Type': 'application/json',
@@ -39,7 +38,7 @@ const ManageClass = () => {
         });
     };
     const handleApproved = cls => {
-        fetch(`http://localhost:5000/class/approved/${cls._id}`, {
+        fetch(`https://sports-school-server-theta.vercel.app/class/approved/${cls._id}`, {
             method: 'PATCH'
         })
             .then(res => res.json())
@@ -57,7 +56,7 @@ const ManageClass = () => {
             })
     }
     const handleDeny = cls => {
-        fetch(`http://localhost:5000/class/denied/${cls._id}`, {
+        fetch(`https://sports-school-server-theta.vercel.app/class/denied/${cls._id}`, {
             method: 'PATCH'
         })
             .then(res => res.json())

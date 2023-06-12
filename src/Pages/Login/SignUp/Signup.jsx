@@ -6,6 +6,7 @@ import img from '../../../assets/sports.jpg';
 import app from '../../../Firebase/firebase.config';
 import useAuth from '../../../Hooks/useAuth';
 import SocialLogin from '../../../Shared/SocialLogin/SocialLogin';
+import {Helmet} from 'react-helmet-async';
 const SignUp = () => {
     const { createUser, updateUser } = useAuth();
     const [errorMessage, setErrorMessage] = useState('');
@@ -21,7 +22,7 @@ const SignUp = () => {
         .then(result => {
             updateUser(result.user, data.name, data.photo);
             const savedUser = {name: data.name, email:data.email, photoURL: data.photo, role: 'student'}
-            fetch('http://localhost:5000/users',{
+            fetch('https://sports-school-server-theta.vercel.app/users',{
                 method: 'POST',
                 headers: {
                     'content-type' : 'application/json'
@@ -45,6 +46,9 @@ const SignUp = () => {
     }
     return (
         <div className="hero min-h-screen bg-base-200">
+             <Helmet>
+                <title>Signup | Sports Basic</title>
+            </Helmet>
             <div className="hero-content flex-col lg:flex-row">
                 <div className="w-1/2 mr-12">
                     <img src={img} alt="" />
