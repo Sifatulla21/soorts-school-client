@@ -45,7 +45,8 @@ const AddClass = () => {
     
     
     return (
-        <div className="w-1/2 p-10 border">
+        <div className="w-1/2 p-10 border bg-blue-100">
+            <h1 className="text-center font-bold text-xl text-black">Add A Class</h1>
             <form onSubmit={handleSubmit(onSubmit)}>
                 <div className="form-control w-full mb-4">
                     <label className="label">
@@ -90,7 +91,7 @@ const AddClass = () => {
                     </label>
                     <input type="file" {...register("image", { required: true })} className="file-input file-input-bordered w-full " />
                 </div>
-                <input className="btn btn-primary mt-4" type="submit" value="Add Class" />
+                <input className="btn btn-primary mt-4 w-full" type="submit" value="Add Class" />
             </form>
         </div>
     );

@@ -54,7 +54,7 @@ import PaymentHistory from "../Pages/Dashboard/User/Payment/PaymentHistory";
     {
       path:'dashboard',
       // element:<PrivateRoute><Dashboard></Dashboard></PrivateRoute>,
-      element:<Dashboard></Dashboard>,
+      element:<PrivateRoute><Dashboard></Dashboard></PrivateRoute>,
       children:[
           {
               path:'addclass',

@@ -12,9 +12,9 @@ const PaymentHistory = () => {
     });
     return (
         <div>
-            <div className="overflow-x-auto">
-                <table className="table">
-                    <thead>
+            <div className="container mx-auto overflow-x-auto w-full">
+                <table className="table border table-zebra w-[800px] text-black font-bold">
+                    <thead className="text-black font bold text-lg bg-blue-200">
                         <tr>
                             <th>#</th>
                             <th>Image</th>

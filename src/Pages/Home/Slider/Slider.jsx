@@ -1,7 +1,7 @@
 import React from 'react';
 const Slider = () => {
     return (
-        <div className="container mx-auto">
+        <div className="container mx-auto mb-40">
             <div className="carousel w-full h-[500px]">
                 <div id="slide1" className="carousel-item relative w-full">
                     <img src="https://img.freepik.com/free-photo/sports-tools_53876-138077.jpg?w=1380&t=st=1686201541~exp=1686202141~hmac=13d9462414814228f442a0c4c3ce848d0396eb6b6cb5656c8dc9f42315154e6e" className="w-full" />

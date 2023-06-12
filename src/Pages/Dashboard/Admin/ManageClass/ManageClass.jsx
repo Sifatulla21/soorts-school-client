@@ -76,10 +76,10 @@ const ManageClass = () => {
     }
     return (
         <div>
-            <h1>Manage Classes: {classes.length}</h1>
-            <div className="overflow-x-auto">
-                <table className="table">
-                    <thead>
+            <h1 className="text-3xl font-bold mb-4">Manage Classes: {classes.length}</h1>
+            <div className="container mx-auto overflow-x-auto w-full">
+                <table className="table border table-zebra w-full text-black font-bold">
+                    <thead className="text-black font bold text-lg bg-blue-200">
                         <tr>
                             <th>#</th>
                             <th>Class Image</th>

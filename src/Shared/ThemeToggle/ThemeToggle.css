@@ -1,0 +1,12 @@
+/* Example dark mode styles */
+.dark {
+    --bg-color: rgb(34, 34, 34);
+    --text-color: #fff;
+  }
+  
+  /* Apply the colors to elements */
+  body {
+    background-color: var(--bg-color);
+    color: var(--text-color);
+  }
+  

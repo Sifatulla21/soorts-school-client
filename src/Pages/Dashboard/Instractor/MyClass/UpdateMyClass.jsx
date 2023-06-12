@@ -29,7 +29,8 @@ const UpdateMyClass = () => {
 
     
     return (
-        <div className="w-1/2 p-10 border">
+        <div className="w-1/2 p-10 border bg-blue-100">
+            <h1 className="text-center font-bold text-xl text-black">Update Class</h1>
         <form onSubmit={handleSubmit(onSubmit)}>
             <div className="form-control w-full mb-4">
                 <label className="label">
@@ -68,7 +69,7 @@ const UpdateMyClass = () => {
                     <input defaultValue={seat} type="number" {...register("seat", { required: true })} placeholder="Available Seat" className="input input-bordered w-full " />
                 </div>
             </div>
-            <input className="btn btn-primary mt-4" type="submit" value="Update Class" />
+            <input className="btn btn-primary mt-4 w-full" type="submit" value="Update Class" />
         </form>
     </div>
     );

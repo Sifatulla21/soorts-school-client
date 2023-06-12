@@ -45,10 +45,10 @@ const SelectedClass = () => {
   }
   return (
     <div>
-      <h1>Selected Class: {selectedClasses.length}</h1>
-      <div className="overflow-x-auto">
-        <table className="table">
-          <thead>
+      <h1 className="text-3xl font-bold mb-4">Selected Class: {selectedClasses.length}</h1>
+      <div className="container mx-auto overflow-x-auto w-full">
+        <table className="table border table-zebra w-[800px] text-black font-bold">
+          <thead className="text-black font bold text-lg bg-blue-200">
             <tr>
               <th>#</th>
               <th>Image</th>
