@@ -14,7 +14,7 @@ const Home = () => {
 
         <div>
             <Helmet>
-                <title>Home | Sports Basic</title>
+                <title>Home | Sports Zone</title>
             </Helmet>
             <Slider></Slider>
             <PopularClass></PopularClass>

@@ -51,7 +51,7 @@ const Classes = () => {
     return (
         <div className="flex items-center justify-center">
             <Helmet>
-                <title>Classes | Sports Basic</title>
+                <title>Classes | Sports Zone</title>
             </Helmet>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12 m-12">
                 {

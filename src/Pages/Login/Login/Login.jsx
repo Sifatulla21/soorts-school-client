@@ -34,14 +34,14 @@ const Login = () => {
     return (
         <div className="hero min-h-screen bg-base-200">
             <Helmet>
-                <title>Login | Sports Basic</title>
+                <title>Login | Sports Zone</title>
             </Helmet>
             <div className="hero-content flex-col lg:flex-row">
                 <div className="w-1/2 mr-12">
                     <img src={img} alt="" />
                 </div>
                 <div className="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100  shadow-lg hover:shadow-xl transition duration-1000 ease-in-out transform hover:-translate-y-1 hover:scale-110">
-                    <div className="card-body">
+                    <div className="card-body bg-blue-100">
                         <h1 className="text-3xl font-bold text-center">Login now!</h1>
                         <form onSubmit={handleSubmit(onSubmit)}>
                             <div className="form-control">

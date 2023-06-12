@@ -11,7 +11,7 @@ const Dashboard = () => {
     return (
         <div>
             <Helmet>
-                <title>Dashboard | Sports Basic</title>
+                <title>Dashboard | Sports Zone</title>
             </Helmet>
             <div className="drawer lg:drawer-open">
                 <input id="my-drawer-2" type="checkbox" className="drawer-toggle" />

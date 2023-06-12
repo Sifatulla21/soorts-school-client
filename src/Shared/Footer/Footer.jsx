@@ -7,7 +7,7 @@ const Footer = () => {
         <div className="container mx-auto flex flex-wrap items-center justify-between">
           <div className="flex items-center mb-4 w-full sm:w-auto">
             <img src={logo} alt="Toy Shop Logo" className="w-10 h-10 mr-2" />
-            <h3 className="text-xl font-semibold">Sports Basic Zone</h3>
+            <h3 className="text-xl font-semibold">Sports Zone</h3>
           </div>
           <div className="flex items-center mb-4 w-full sm:w-auto">
             <form className="flex">
@@ -51,7 +51,7 @@ const Footer = () => {
           </div>
         </div>
         <div className="container mx-auto text-center text-gray-400">
-          &copy; {new Date().getFullYear()} Sports Basic Zone. All rights reserved.
+          &copy; {new Date().getFullYear()} Sports Zone. All rights reserved.
         </div>
       </footer>
     );

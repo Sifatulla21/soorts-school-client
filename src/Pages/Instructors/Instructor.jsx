@@ -13,7 +13,7 @@ const Instructor = () => {
     return (
         <div className="w-1/2 mx-auto">
             <Helmet>
-                <title>Instractor | Sports Basic</title>
+                <title>Instractor | Sports Zone</title>
             </Helmet>
                 
             <h1 className="text-3xl font-bold">Instructors: {users.length}</h1>
