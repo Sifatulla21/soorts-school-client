@@ -1,12 +1,13 @@
 import { CardElement, useElements, useStripe } from '@stripe/react-stripe-js';
 import React, { useEffect, useState } from 'react';
+import { Navigate } from 'react-router-dom';
 import Swal from 'sweetalert2';
 import useAuth from '../../../../Hooks/useAuth';
 import useAxiosSecure from '../../../../Hooks/useAxiosSecure';
 import './CheckoutForm.css'
 
 const CheckoutForm = ({classDetails}) => {
-    const {_id, name, price} = classDetails;
+    const {_id, name, price, image, iName} = classDetails;
     const stripe = useStripe();
     const { user } = useAuth();
     const elements = useElements();
@@ -73,7 +74,9 @@ const CheckoutForm = ({classDetails}) => {
                 transactionId: paymentIntent.id,
                 price,
                 date: new Date(),
-                className: name
+                className: name,
+                instractor: iName,
+                image: image
             }
             axiosSecure.post('/payments', payment)
                 .then(res => {

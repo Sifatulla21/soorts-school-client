@@ -43,9 +43,6 @@ const SelectedClass = () => {
       }
     });
   }
-  const handlePayment = classes => {
-
-  }
   return (
     <div>
       <h1>Selected Class: {selectedClasses.length}</h1>
@@ -80,7 +77,7 @@ const SelectedClass = () => {
                 <td>{selectedClasse.iName}</td>
                 <td>{selectedClasse.price}</td>
                 <td><button onClick={() => handleDelete(selectedClasse)} className="btn btn-square text-3xl"><FaTrashAlt className="text-red-500"></FaTrashAlt></button></td>
-                <td><Link to={`payment/${selectedClasse._id}`}><button onClick={() => handlePayment(selectedClasse)} className="btn btn-square text-3xl"><FaRegCreditCard className="text-primary"></FaRegCreditCard></button></Link></td>
+                <td><Link to={`payment/${selectedClasse._id}`}><button className="btn btn-square text-3xl"><FaRegCreditCard className="text-primary"></FaRegCreditCard></button></Link></td>
               </tr>)
             }
           </tbody>

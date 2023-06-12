@@ -20,6 +20,8 @@ import MyClass from "../Pages/Dashboard/Instractor/MyClass/MyClass";
 import SelectedClass from "../Pages/Dashboard/User/SelectedClass/SelectedClass";
 import UpdateMyClass from "../Pages/Dashboard/Instractor/MyClass/UpdateMyClass";
 import Payment from "../Pages/Dashboard/User/Payment/Payment";
+import MyEnrolledClass from "../Pages/Dashboard/User/EnrolledClass/MyEnrolledClass";
+import PaymentHistory from "../Pages/Dashboard/User/Payment/PaymentHistory";
 
   export const router = createBrowserRouter([
     {
@@ -83,6 +85,14 @@ import Payment from "../Pages/Dashboard/User/Payment/Payment";
               path:'selectedclass/payment/:id',
               element:<PrivateRoute><Payment></Payment></PrivateRoute>,
               loader: ({params}) => fetch(`http://localhost:5000/payment/${params.id}`)
+          },  
+          {
+              path:'enrolledclass',
+              element:<PrivateRoute><MyEnrolledClass></MyEnrolledClass></PrivateRoute>
+          },  
+          {
+              path:'paymenthistory',
+              element:<PrivateRoute><PaymentHistory></PaymentHistory></PrivateRoute>
           },  
       ]
   },

@@ -28,8 +28,8 @@ const Dashboard = () => {
                                     <li><Link to="myclasses">My Classes</Link></li>
                                 </> : <>
                                     <li><Link to="selectedclass">My Selected Classes</Link></li>
-                                    <li><Link>My Enrolled Classes</Link></li>
-                                    <li><Link>Payment History</Link></li>
+                                    <li><Link to="enrolledclass">My Enrolled Classes</Link></li>
+                                    <li><Link to="paymenthistory">Payment History</Link></li>
                                 </>
                         }
                         <div className="divider"></div>
